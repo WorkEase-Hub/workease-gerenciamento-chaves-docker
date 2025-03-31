@@ -1,5 +1,7 @@
 # ![Modelo Relacional](doc/favicon.ico) WorkEase - Gerenciamento de Chaves e Salas
 
+![Modelo Relacional](doc/screenshot-dashboard.png)
+
 ## Índice
 
 - [ WorkEase - Gerenciamento de Chaves e Salas](#-workease---gerenciamento-de-chaves-e-salas)
