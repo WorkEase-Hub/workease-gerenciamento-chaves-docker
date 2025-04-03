@@ -3,9 +3,6 @@
 #   Start:        docker compose up
 #   Stop:         docker compose down
 #   Destroy:      docker compose down -v --remove-orphans
-
-name: supabase
-
 services:
   workease-frontend:
     container_name: workease-frontend
@@ -54,7 +51,7 @@ services:
       AUTH_JWT_SECRET: ${JWT_SECRET}
       LOGFLARE_API_KEY: ${LOGFLARE_API_KEY}
       LOGFLARE_URL: http://analytics:4000
-      NEXT_PUBLIC_ENABLE_LOGS: true
+      NEXT_PUBLIC_ENABLE_LOGS: "true"
       NEXT_ANALYTICS_BACKEND_PROVIDER: postgres
       STUDIO_CORS_ALLOW_ORIGINS: http://localhost:8081,http://localhost:5173,http://localhost:3000
 
@@ -85,7 +82,7 @@ services:
       KONG_CORS_METHODS: GET,POST,PUT,PATCH,DELETE,OPTIONS
       KONG_CORS_HEADERS: Content-Type,Authorization,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,Keep-Alive,X-Requested-With,If-Modified-Since,apikey,x-client-info
       KONG_CORS_EXPOSED_HEADERS: Content-Length,Content-Range
-      KONG_CORS_CREDENTIALS: true
+      KONG_CORS_CREDENTIALS: "true"
       KONG_CORS_MAX_AGE: 3600
     entrypoint: bash -c 'eval "echo \"$$(cat ~/temp.yml)\"" > ~/kong.yml && /docker-entrypoint.sh kong docker-start'
 
@@ -306,8 +303,8 @@ services:
       DB_PASSWORD: ${POSTGRES_PASSWORD}
       DB_SCHEMA: _analytics
       LOGFLARE_API_KEY: ${LOGFLARE_API_KEY}
-      LOGFLARE_SINGLE_TENANT: true
-      LOGFLARE_SUPABASE_MODE: true
+      LOGFLARE_SINGLE_TENANT: "true"
+      LOGFLARE_SUPABASE_MODE: "true"
       LOGFLARE_MIN_CLUSTER_SIZE: 1
       POSTGRES_BACKEND_URL: postgresql://supabase_admin:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/_supabase
       POSTGRES_BACKEND_SCHEMA: _analytics
