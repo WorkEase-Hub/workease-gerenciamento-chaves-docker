@@ -133,14 +133,14 @@ services:
 
   ## Secure Realtime routes
   - name: realtime-v1-ws
-    _comment: 'Realtime: /realtime/v1/* -> ws://realtime:4000/socket/*'
-    url: http://realtime-dev.supabase-realtime:4000/socket
+    _comment: 'Realtime: /realtime/v1/websocket -> ws://realtime:4000/socket/websocket'
+    url: http://realtime:4000/socket/websocket
     protocol: ws
     routes:
-      - name: realtime-v1-ws
-        strip_path: true
+      - name: realtime-v1-websocket
+        strip_path: false
         paths:
-          - /realtime/v1/
+          - /realtime/v1/websocket
     plugins:
       - name: cors
       - name: key-auth
@@ -154,7 +154,7 @@ services:
             - anon
   - name: realtime-v1-rest
     _comment: 'Realtime: /realtime/v1/* -> ws://realtime:4000/socket/*'
-    url: http://realtime-dev.supabase-realtime:4000/api
+    url: http://realtime:4000/api
     protocol: http
     routes:
       - name: realtime-v1-rest
